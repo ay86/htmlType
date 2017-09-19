@@ -1,0 +1,23 @@
+/**
+ * @Author Angus <angusyoung@mrxcool.com>
+ * @Description 测试样本
+ * @Since 2017/9/19
+ */
+
+module.exports = {
+	text: '<p>北京的旅游景点琳琅满目，但如果要挑出既文艺，又人少安静的地方，那就屈指可数了，这样的冷门景点有古寺、胡同、博物馆、也有艺术区、咖啡馆、书屋、戏院 ……</p>\n' +
+	'<p>如果你也喜欢这些文艺气息十足的地方，那么就跟我们一起往下看吧！</p>\n' +
+	'<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_0" onclick=""><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_0" data-original="https://sample.com/201706/5930df201bc8e0a42d00006d_640.jpg" data-height="466" data-width="640" src="http://sample.com/article_upload/20170606/20170606174512d656ec2"></div></div>红砖美术馆——北京最美的私人美术馆。北京最美的美术馆。我觉得是文艺青年撩妹 / 汉胜地，建议非周末去，人少安静，两个人聊聊天，发发呆，挺好。<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_1" onclick=""><video src="fuck.3gp"><resource="xxx.mp4"></resource></video><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_1" data-original="https://sample.com/201706/5930df201bc8e0a42d00006e_640.jpg" data-height="400" data-width="600" src="http://sample.com/article_upload/20170606/20170606174513d6b6980"></div></div>红砖美术馆的建筑设计很有意思，出自北大董豫赣老师之手，小且精致，很多细节，光影变化丰富，空间感强烈，用了不少中国园林的手法叠石理林，慢慢玩的话，可以呆大半天。<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_2" onclick=""><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_2" data-original="https://sample.com/201706/5930df201bc8e0a42d00006f_640.jpg" data-height="426" data-width="640" src="http://sample.com/article_upload/20170606/20170606174514d7054a7"></div></div>馆内有西餐厅，就餐很方便。拐出去旁边还有果园餐厅，周一闭馆，全价票：20 元 / 人，每月第一周的星期四为免费参观日，开放时间是 10:00 — 17:30。<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_3" onclick=""><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_3" data-original="https://sample.com/201706/5930df201bc8e0a42d000070_640.jpg" data-height="431" data-width="640" src="http://sample.com/article_upload/20170606/20170606174514d77695f"></div></div>今日美术馆——感受当代艺术的摇篮。<p>从艺术设计的角度来看，观众来到美术馆，在欣赏艺术作品之前，需要一个心理准备的过程。来者远远看到入口，但却看不到上去的楼梯，好奇的心理便产生了。等来到近前，人们会发现一条直通入口的坡道，这样的设计使人获得一种 " 柳暗花明 " 的奇妙体验。</p>\n' +
+	'<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_4" onclick=""><div class="content_img_div perview_img_div"><img src="xxx.jpg" /><img class="lazy opacity_0 " id="img_4" data-original="https://sample.com/201706/5930df201bc8e0a42d000071_640.jpg" data-height="426" data-width="640" src="http://sample.com/article_upload/20170606/20170606174515d7bc946"></div></div>美术馆内部设计全部为白色，目的就是要尽量突出其内部展示的作品，让作品在其间能够达到最佳展示效果。看完出来一层有艺术书店，设计、美术、艺术、人文类的书蛮多。累了，可以去附近咖啡店、甜点店小坐、聊天。<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_5" onclick=""><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_5" data-original="https://sample.com/201706/5930df201bc8e0a42d000072_640.jpg" data-height="426" data-width="640" src="http://sample.com/article_upload/20170606/20170606174515d80b366"></div></div>五道营胡同——极具文艺范儿的胡同。这条胡同里有很多有意思，有情调的特色餐厅、咖啡馆、小店，店后身儿就是大杂院和民居。<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_6" onclick=""><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_6" data-original="https://sample.com/201706/5930df201bc8e0a42d000073_640.jpg" data-height="480" data-width="640" src="http://sample.com/article_upload/20170606/20170606174516d871293"></div></div>早上可以看到穿着拖拉板，端着搪瓷大碗出门买豆腐脑的大妈。晚上可以见到穿着时尚的文艺青年。胡同里，老外蹬着自行车自由的穿梭其中。<p></p>\n' +
+	'<div class="img_box" id="id_imagebox_7" onclick=""><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_7" data-original="https://sample.com/201706/5930df201bc8e0a42d000074_640.jpg" data-height="426" data-width="640" src="http://sample.com/article_upload/20170606/20170606174517d8c7be3"></div></div>篱苑书屋——体验在山间读书的生活。位于北京郊区的怀柔小镇，书屋之所以取名为 " 篱苑 "，书屋外墙用的是取自漫山遍野的劈柴围成的篱笆。因为风景好看，很多文艺青年会来这里拍照。<p></p>\n' +
+	'<iframe src="xxx.html" width="299" height="200"></iframe><div class="img_box" id="id_imagebox_8" onclick=""><div class="content_img_div perview_img_div"><img class="lazy opacity_0 " id="img_8" data-original="https://sample.com/201706/5930df201bc8e0a42d000075_640.jpg" data-height="426" data-width="640" src="http://sample.com/article_upload/20170606/20170606174517d91bef5"></div></div>这是一个免费的阅览室，建筑内部没有任何隔断和家具，书屋里书籍排布随意而易取。工作日不开放，周末开放。周末开放时间从上午 8:30（~9:00）-11:30，下午 1:30~4:30。<div id="recommend_bottom"></div>\n' +
+	'<div id="article_bottom"></div>\n' +
+	'<p id="ID_disclaimer" style="text-align:center;color:#666;font-size:10px;">原网页已经由转码以便在移动设备上查看</p>'
+};

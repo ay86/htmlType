@@ -1,0 +1,25 @@
+{
+  "name": "html-type",
+  "version": "1.0.0",
+  "description": "htmlType 是一个针对网页内容进行优雅自排版的工具",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ay86/htmlType.git"
+  },
+  "keywords": [
+    "htmlType"
+  ],
+  "author": "Angus.Y",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ay86/htmlType/issues"
+  },
+  "homepage": "https://github.com/ay86/htmlType#readme"
+}
