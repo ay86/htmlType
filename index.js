@@ -45,9 +45,9 @@ HtmlType.prototype = {
 		return sClearHTML;
 	},
 	typeSpecial : function (sHTML) {
-		var exTag = new RegExp('<(' + this.specialTag.join('|') + ') .*?>.*</\\1>|<img .*?>', 'g');
+		var exTag = new RegExp('<(' + this.specialTag.join('|') + ')( |).*?>.*</\\1>|<img .*?>', 'g');
 		var aMatchTag = sHTML.match(exTag);
-		// console.log(aMatchTag);
+		// console.log(exTag, aMatchTag);
 		var aSpecial = [];
 		if (aMatchTag) {
 			for (var i = 0; i < aMatchTag.length; i++) {
@@ -57,7 +57,28 @@ HtmlType.prototype = {
 						case 'img':
 						case 'video':
 						case 'iframe':
+						case 'ul':
+						case 'ol':
+						case 'dl':
+						case 'table':
+						case 'h1':
+						case 'h2':
+						case 'h3':
+						case 'h4':
+						case 'h5':
+						case 'h6':
 							aSpecial.push(aMatchTag[i]);
+							break;
+						case 'pre':
+						case 'code':
+						case 'strong':
+						case 'b':
+						case 'em':
+							// 内联元素
+							aSpecial.push({
+								key  : this.text(aMatchTag[i]),
+								value: aMatchTag[i]
+							});
 							break;
 					}
 				}
@@ -80,7 +101,25 @@ HtmlType.prototype = {
 		var aOutput = [];
 		for (var i = 0; i < aHTMLData.length; i++) {
 			if (this.checkSpecial(aHTMLData[i])) {
-				aOutput = aOutput.concat(this.typeSpecial(aHTMLData[i]));
+				var _result = this.typeSpecial(aHTMLData[i]);
+				for (var j = 0; j < _result.length; j++) {
+					if (typeof _result[j] === 'object') {
+						aTextData[i] = aTextData[i].replace(_result[j].key, _result[j].value);
+					}
+					else {
+						aOutput.push(_result[j]);
+					}
+				}
+				// if (_result instanceof Array) {
+				// 	aOutput = aOutput.concat(_result);
+				// }
+				// else if (typeof _result === 'object') {
+				// 	for (var v in _result) {
+				// 		if (_result.hasOwnProperty(v)) {
+				// 			aTextData[i] = aTextData[i].replace(v, _result[v]);
+				// 		}
+				// 	}
+				// }
 			}
 			aOutput.push(aTextData[i].length ? '<p>' + aTextData[i] + '</p>' : '');
 		}

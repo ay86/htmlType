@@ -7,7 +7,7 @@
 var HT = require('../index');
 var sample = require('./sample');
 var htmlContent = sample.text;
-var hType = new HT(['img', 'video', 'iframe']);
+var hType = new HT(['img', 'video', 'iframe','code']);
 console.time('use time');
 var typeContent = hType.type(htmlContent);
 console.log(typeContent);
