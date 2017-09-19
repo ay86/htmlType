@@ -1,6 +1,6 @@
 {
   "name": "html-type",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "htmlType 是一个针对网页内容进行优雅自排版的工具",
   "main": "index.js",
   "directories": {

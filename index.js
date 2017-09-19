@@ -1,10 +1,10 @@
 /**
  * @Author Angus <angusyoung@mrxcool.com>
- * @Description htmlType reset type for HTML content.
+ * @Description HTMLType reset type for HTML content.
  * @Since 2017/9/19
  */
 
-function HtmlType(aTag) {
+function HTMLType(aTag) {
 	// 保留的非纯文本内容标签
 	this.specialTag = aTag || [
 		'img',
@@ -12,7 +12,7 @@ function HtmlType(aTag) {
 	];
 }
 
-HtmlType.prototype = {
+HTMLType.prototype = {
 	clear       : function (sHTML) {
 		var sClearHTML = sHTML;
 
@@ -22,7 +22,7 @@ HtmlType.prototype = {
 			return sTag.replace(/ ([\w\-]+)=("|').*?\2/g, function (sMatch, $1) {
 				var sReplace = '';
 				switch ($1) {
-					// 此此是需要保留的属性
+					// 此处是需要保留的属性
 					case 'href':
 					case 'src':
 					case 'rel':
@@ -34,7 +34,8 @@ HtmlType.prototype = {
 			});
 		});
 		// Step 2 过滤掉冗余的标签
-		// 最多进行500次过滤，防止死循环 or 处理的标签太多程序卡死
+		// e.g. <div><div><strong></strong></div><p><span></span></p></div>
+		// 最多进行500次过滤，防止死循环 or 处理的标签太多造成性能消耗过重
 		var nSafeLimit = 500;
 		var sExp = '<(\\w*)>\\s*<\\/\\1>';
 		while ((new RegExp(sExp)).test(sClearHTML) && nSafeLimit > 0) {
@@ -45,9 +46,8 @@ HtmlType.prototype = {
 		return sClearHTML;
 	},
 	typeSpecial : function (sHTML) {
-		var exTag = new RegExp('<(' + this.specialTag.join('|') + ')( |).*?>.*</\\1>|<img .*?>', 'g');
-		var aMatchTag = sHTML.match(exTag);
-		// console.log(exTag, aMatchTag);
+		var reTag = new RegExp('<(' + this.specialTag.join('|') + ')( |).*?>.*</\\1>|<img .*?>', 'g');
+		var aMatchTag = sHTML.match(reTag);
 		var aSpecial = [];
 		if (aMatchTag) {
 			for (var i = 0; i < aMatchTag.length; i++) {
@@ -61,6 +61,9 @@ HtmlType.prototype = {
 						case 'ol':
 						case 'dl':
 						case 'table':
+						case 'blockquote':
+						case 'canvas':
+						case 'svg':
 						case 'h1':
 						case 'h2':
 						case 'h3':
@@ -74,6 +77,8 @@ HtmlType.prototype = {
 						case 'strong':
 						case 'b':
 						case 'em':
+						case 'del':
+						case 'a':
 							// 内联元素
 							aSpecial.push({
 								key  : this.text(aMatchTag[i]),
@@ -110,16 +115,6 @@ HtmlType.prototype = {
 						aOutput.push(_result[j]);
 					}
 				}
-				// if (_result instanceof Array) {
-				// 	aOutput = aOutput.concat(_result);
-				// }
-				// else if (typeof _result === 'object') {
-				// 	for (var v in _result) {
-				// 		if (_result.hasOwnProperty(v)) {
-				// 			aTextData[i] = aTextData[i].replace(v, _result[v]);
-				// 		}
-				// 	}
-				// }
 			}
 			aOutput.push(aTextData[i].length ? '<p>' + aTextData[i] + '</p>' : '');
 		}
@@ -130,4 +125,4 @@ HtmlType.prototype = {
 	}
 };
 
-module.exports = HtmlType;
+module.exports = HTMLType;
