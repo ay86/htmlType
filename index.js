@@ -46,7 +46,7 @@ HTMLType.prototype = {
 		return sClearHTML;
 	},
 	typeSpecial : function (sHTML) {
-		var reTag = new RegExp('<(' + this.specialTag.join('|') + ')( |).*?>.*</\\1>|<img .*?>', 'g');
+		var reTag = new RegExp('<(' + this.specialTag.join('|') + ')( |).*?>.*?</\\1>|<img .*?>', 'g');
 		var aMatchTag = sHTML.match(reTag);
 		var aSpecial = [];
 		if (aMatchTag) {
@@ -82,7 +82,7 @@ HTMLType.prototype = {
 							// 内联元素
 							aSpecial.push({
 								key  : this.text(aMatchTag[i]),
-								value: aMatchTag[i]
+								value: this.getSubNode(aMatchTag[i])
 							});
 							break;
 					}
@@ -97,14 +97,32 @@ HTMLType.prototype = {
 	text        : function (sHTML) {
 		return sHTML.replace(/<.*?>/g, '');
 	},
-	type        : function (sHTML) {
-		this.data = sHTML;
-		var sFormatHTML = this.clear(this.data),
-		    sFormatText = this.text(this.data);
+	getSubNode  : function (sHTML) {
+		// 取出内部节点，对可能存在的标签节点进行过再处理
+		var _pre = '',
+		    _sub = '',
+		    _end = '';
+		var _match = sHTML.match(/^<(.*?)>(.*)<\/(.*?)>$/);
+		if (_match) {
+			_pre = '<' + _match[1] + '>';
+			_sub = _match[2];
+			_end = '</' + _match[3] + '>';
+		}
+		if (/<.*>/g.test(_sub)) {
+			return _pre + this.handler(_sub).replace(/<(\/)?TYPE-TAG>/g, '') + _end;
+		}
+		else {
+			return sHTML;
+		}
+	},
+	handler     : function (sHTML) {
+		var sFormatHTML = this.clear(sHTML),
+		    sFormatText = this.text(sHTML);
 		var aHTMLData = sFormatHTML.split('\n'),
 		    aTextData = sFormatText.split('\n');
 		var aOutput = [];
 		for (var i = 0; i < aHTMLData.length; i++) {
+			aTextData[i] = aTextData[i].replace(/\s/g, '');
 			if (this.checkSpecial(aHTMLData[i])) {
 				var _result = this.typeSpecial(aHTMLData[i]);
 				for (var j = 0; j < _result.length; j++) {
@@ -116,11 +134,13 @@ HTMLType.prototype = {
 					}
 				}
 			}
-			aOutput.push(aTextData[i].length ? '<p>' + aTextData[i] + '</p>' : '');
+			aOutput.push(aTextData[i].length ? '<TYPE-TAG>' + aTextData[i] + '</TYPE-TAG>' : '');
 		}
-
-		this.output = aOutput.join('\n');
-
+		return aOutput.join('\n').replace(/\s+/g, '\n');
+	},
+	type        : function (sHTML) {
+		this.data = sHTML;
+		this.output = this.handler(this.data).replace(/<(\/)?TYPE-TAG>/g, '<$1p>');
 		return this.output;
 	}
 };
