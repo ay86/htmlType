@@ -136,7 +136,7 @@ HTMLType.prototype = {
 			}
 			aOutput.push(aTextData[i].length ? '<TYPE-TAG>' + aTextData[i] + '</TYPE-TAG>' : '');
 		}
-		return aOutput.join('\n').replace(/\s+/g, '\n');
+		return aOutput.join('\n').replace(/\n+/g, '\n');
 	},
 	type        : function (sHTML) {
 		this.data = sHTML;
