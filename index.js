@@ -140,7 +140,7 @@ HTMLType.prototype = {
 		*/
 		for (var i = 0; i < aHTMLData.length; i++) {
 			// 清除单行文本里的多余空格或制表符号等
-			aTextData[i] = aTextData[i].replace(/\s/g, '');
+			aTextData[i] = aTextData[i].replace(/(^\s+|[\f\n\r\t\v])/g, '').replace(/ +/g, ' ');
 			// 处理存在特殊标签的行内容
 			if (this.checkSpecial(aHTMLData[i])) {
 				// 返回保留的特殊标签内容
